@@ -1,0 +1,53 @@
+Product Component - done
+Flash Sales Timer - done 
+Integration Layer - done
+Search Bar - done
+Category Component - done
+LeftRight Buttons - done
+
+TODO:
+[x] Login Image Centering 
+[x] Sidebar Refs 
+[x] Navbar Refs 
+[x] Footer Refs
+[X] Mock Backend
+    [x] Fix Signup Input - 10 mins
+[x] Footer Refs Pointing - 10 mins
+[x] Navbar Refs Pointing - 10 mins
+[] Mobile Responsiveness Polish
+    [x] Flash Sales Timer - 30 mins
+    [x] Product Tiles Showcase - 15 mins
+    [x] New Arrival - 30 mins
+    [x] SubFooter - 20 mins
+    [X] Navbar Items
+        [X] Navbar Hamburger - 30 mins
+[x] Navigation - 10 mins
+[X] Kick out when auth is out
+[] Hero Carousell - 1h
+    [x] Find Images (1x)
+    [X] Side by Side
+    [X] Sliding Animation
+    [X] Hollow Button
+    [] Make more slides
+[X] New Arrival Section Images- 10m
+[] Fix Display
+    // size >= md -> 8 entries page
+    // else -> 4 entries per page
+    [x] Put props on the product tile that set's the width of tile otherwise it's auto by default
+    [x] Flash Sales - 
+        [x] Carousel
+        [x] Left Right Button
+        [x] View All Products Button
+    [x] Best Selling Products
+        [x] Limited Display
+    [x] Explore Our Products
+        [x] View All Button
+        [x] 4/8
+        [x] Carousel
+    [x] Category Tile Sizing
+    [] New Arrival Mobile Responsiveness
+
+
+Less Prio:
+[] Logo - 10 mins
+[] Footer Images - 10 mins
