@@ -30,7 +30,7 @@ TODO:
     [X] Hollow Button
     [] Make more slides
 [X] New Arrival Section Images- 10m
-[] Fix Display
+[x] Fix Display
     // size >= md -> 8 entries page
     // else -> 4 entries per page
     [x] Put props on the product tile that set's the width of tile otherwise it's auto by default
@@ -45,9 +45,31 @@ TODO:
         [x] 4/8
         [x] Carousel
     [x] Category Tile Sizing
-    [] New Arrival Mobile Responsiveness
+    [x] New Arrival Mobile Responsiveness
+[x] About Page
+    [x] Exec Carousel
+    [x] Stats Section
 
+[x] Fix adbar
+[] remove sign in when logged in
+[] motion
+[x] bring back log in in sign in page
+[x] contact num handling
+[] Password view
 
-Less Prio:
-[] Logo - 10 mins
-[] Footer Images - 10 mins
+[] NavPath
+[] Product Page
+[] Product Image
+[] Image Zoom
+[] Related Items
+[] Cart Page
+[] Checkout
+[] Backend
+    [] Products
+    [] Checkout
+    [] Coupon
+[] Billing Details Page
+[] Profile Page
+[] Contact Info
+[] Wishlist page
+[] 404 Not Found Page
