@@ -13,7 +13,7 @@ export default async function signup(input: SignupInput) {
   const data = {
     username: input.username,
     password: input.password,
-    ...(parsed.email     && { email:    parsed.email }),
+    ...(parsed.email && { email: parsed.email }),
     ...(parsed.phoneNum && { phoneNum: parsed.phoneNum }),
   };
 
