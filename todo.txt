@@ -69,11 +69,15 @@ TODO:
     [] Watched clicked
     [] Flash Timer
     [] Sign up
+[] Force scroll in 
 [] Fix hero carousel sizing issue
 [] Add another Navbar item
 [] Executive soc med links
 [x] Fix Remaining page sizing issues
 [x] Cart Button
+[] Fix Screen Responsiveness of the ff:
+    [] Ad Section
+    [] Hero Carousel
 [x] Wishlist Button
 [] Breadcrumb
 [] Cart Page
@@ -89,6 +93,11 @@ TODO:
     [] Products
     [] Checkout
     [] Coupon
+[] Issues
+    [x] Footer Mobile Responsiveness
+    [] New Arrivals
+    [] Flash Sales Tiles
+    [] Hero Overflowing in ~340px
 
 * Navigation paths 
 
@@ -100,3 +109,13 @@ Variant rules
     - allow indexing
 - zoom maybe?
 - 
+
+Cart
+- id: string
+- One to One (Cart - User)
+- One to Many (Cart - CartItem)
+
+CartItem
+- One to Many (Cart - CartItem)
+- One to One (CartItem - User)
+

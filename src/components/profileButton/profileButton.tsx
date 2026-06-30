@@ -29,7 +29,7 @@ export default function ProfileButton() {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-2 h-10 px-2 rounded-full transition-colors ${
+        className={`flex items-center gap-2 h-10 px-2 rounded-full transition-colors max-sm:flex-row-reverse ${
           open ? "bg-black/10" : "hover:bg-black/5"
         }`}
       >

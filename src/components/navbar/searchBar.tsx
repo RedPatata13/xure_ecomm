@@ -4,9 +4,10 @@ import { useState } from "react";
 interface SearchBarProps {
     onSearch?: (query: string) => void;
     placeholder?: string;
+    className? : string;
 }
 
-export default function SearchBar({ onSearch, placeholder = "What are you looking for?" }: SearchBarProps) {
+export default function SearchBar({ onSearch, placeholder = "What are you looking for?", className = "" }: SearchBarProps) {
     const [query, setQuery] = useState("");
 
     function handleSubmit(e: React.FormEvent) {
@@ -15,7 +16,7 @@ export default function SearchBar({ onSearch, placeholder = "What are you lookin
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex items-center bg-gray-100 rounded px-4 py-2 gap-2 w-64">
+        <form onSubmit={handleSubmit} className={`flex items-center bg-gray-100 rounded px-4 py-2 gap-2 w-64 ${className}`}>
             <input
                 type="text"
                 value={query}

@@ -1,4 +1,4 @@
-import Countdown from "../../../components/timer/timer";
+import Countdown from "../../../components/countdown/oountdown";
 import SectionHeader from "./sectionHeader";
 import ProductTile from "../../../components/productTile/productTile";
 import LeftRightButtons from "../../../components/leftRightButtons/leftRightButtons";
@@ -9,7 +9,7 @@ import LoadingSpinner from "../../../components/loadingSpinner/loadingSpinner";
 import { motion, type Variants } from "motion/react";
 
 const TILE_WIDTH = 270;
-const TILE_GAP = 24; // gap-6 intw
+const TILE_GAP = 24; // gap-6 in tw
 const SCROLL_AMOUNT = TILE_WIDTH + TILE_GAP;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -44,8 +44,8 @@ export default function FlashSales() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex w-full justify-between items-end">
-        <div className="flex gap-28 items-end">
+      <div className="flex flex-col sm:flex-row w-full sm:justify-between sm:items-end gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-10 lg:gap-28 sm:items-end">
           <SectionHeader
             headerText="Flash Sales"
             labelText="Today's"
@@ -100,6 +100,7 @@ export default function FlashSales() {
           View All Products
         </Button>
       </div>
+
       <hr className="border-t border-gray-300" />
     </div>
   );

@@ -7,14 +7,20 @@ interface CountdownProps {
 function TimeUnit({ value, label }: { value: number; label: string }) {
     return (
         <div className="flex flex-col items-center">
-            <span className="text-xs text-gray-500 mb-1">{label}</span>
-            <span className="text-4xl font-bold">{String(value).padStart(2, "0")}</span>
+            <span className="text-[10px] sm:text-xs text-gray-500 mb-1">{label}</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                {String(value).padStart(2, "0")}
+            </span>
         </div>
     );
 }
 
 function Separator() {
-    return <span className="text-[#DB4444] text-2xl font-bold pb-1">:</span>;
+    return (
+        <span className="text-[#DB4444] text-base sm:text-xl md:text-2xl font-bold pb-1">
+            :
+        </span>
+    );
 }
 
 export default function Countdown({ targetDate }: CountdownProps) {
@@ -36,7 +42,7 @@ export default function Countdown({ targetDate }: CountdownProps) {
     }, [targetDate, calculate]);
 
     return (
-        <div className="flex items-end gap-3">
+        <div className="flex items-end gap-1.5 sm:gap-2 md:gap-3">
             <TimeUnit label="Days" value={timeLeft.days} />
             <Separator />
             <TimeUnit label="Hours" value={timeLeft.hours} />

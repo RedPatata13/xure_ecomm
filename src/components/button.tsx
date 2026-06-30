@@ -1,7 +1,7 @@
 import { Button as BaseButton } from '@headlessui/react'
+import { twMerge } from 'tailwind-merge'
 
 type ButtonSize = "sm" | "md" | "lg";
-
 const sizeStyles: Record<ButtonSize, string> = {
     sm: "px-4 py-1.5 text-xs",
     md: "px-6 py-2 text-sm",
@@ -21,7 +21,10 @@ export default function Button({ children, type = "button", size = "md", classNa
             type={type} 
             disabled={disabled}
             onClick={onClick}
-            className={`rounded bg-[#DB4444] text-white data-active:bg-red-700 data-hover:bg-red-600 data-disabled:opacity-50 data-disabled:cursor-not-allowed whitespace-nowrap ${sizeStyles[size]} ${className}`}
+            className={twMerge(
+                `rounded bg-[#DB4444] text-white hover:bg-red-600 data-disabled:opacity-50 data-disabled:cursor-not-allowed whitespace-nowrap ${sizeStyles[size]}`,
+                className
+            )}
             >   
             {children}
         </BaseButton>

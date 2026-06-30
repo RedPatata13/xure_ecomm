@@ -1,5 +1,5 @@
 import NewArrivalTile from "./newArrivalTile";
-import SectionHeader from "./sectionHeader";
+import SectionHeader from "../components/sectionHeader";
 
 export default function NewArrivals() {
   return (
@@ -13,9 +13,7 @@ export default function NewArrivals() {
           className="w-full h-64 md:h-full md:flex-1"
         />
 
-        {/* Right column */}
         <div className="flex flex-col gap-4 md:flex-1">
-          {/* Women's Collections */}
           <NewArrivalTile
             productName="Women's Collections"
             productDesc="Feature woman collections that give you another vibe"
@@ -23,7 +21,6 @@ export default function NewArrivals() {
             className="w-full h-56 md:h-1/2"
           />
 
-          {/* Bottom row: Speakers + Perfume */}
           <div className="flex gap-4 h-40 md:h-1/2">
             <NewArrivalTile
               productName="Speakers"

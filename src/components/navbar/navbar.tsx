@@ -29,7 +29,7 @@ export default function NavBar() {
 
   return (
     <div className={`sticky top-0 z-50 flex flex-col bg-white transition-shadow duration-200 ${scrolled ? "shadow-md" : ""}`}>
-      <div className="flex items-center justify-between w-full px-8 py-4 md:px-12 lg:px-24">
+      <div className="flex items-center justify-between w-full pr-4 pl-6 py-2 md:px-12 lg:px-24">
         {/* sm: hamburger, md+: logo */}
         <button
           aria-label="Toggle menu"
@@ -89,9 +89,11 @@ export default function NavBar() {
         </div>
 
         <div className="flex gap-2">
-          <SearchBar />
+          <div className="hidden md:block">
+            <SearchBar />
+          </div>
           {authState &&
-            <div className="flex mx-2 gap-1">
+            <div className="flex ml-2 gap-1">
               <ProfileButton />
             </div>
           }
@@ -105,13 +107,14 @@ export default function NavBar() {
         } grid`}
       >
         <div
-          className="min-h-0 flex flex-col px-8 gap-4 border-b border-gray-200 transition-all duration-300 ease-in-out"
+          className="min-h-0 flex flex-col px-6 gap-4 border-b border-gray-200 transition-all duration-300 ease-in-out"
           style={{
             paddingTop: menuOpen ? "1rem" : 0,
             paddingBottom: menuOpen ? "1rem" : 0,
           }}
         >
-          <Exclusive />
+          {/* <Exclusive /> */}
+          <SearchBar  className="w-full"/>
           <NavBarItem target="/" onClick={() => setMenuOpen(false)}>
             Home
           </NavBarItem>

@@ -49,7 +49,7 @@ export default function HeroCarousel({ slides }: { slides: CarouselSlideComponen
 
     return (
         <div className="relative w-full select-none">
-            <div className="relative h-72 w-full overflow-hidden rounded-xl">
+            <div className="relative h-42 w-full overflow-hidden rounded-xl xs:h-52 sm:h-60 md:h-72 lg:h-80">
                 <div
                     className="flex h-full transition-transform duration-300 ease-in-out"
                     style={{ transform: `translateX(-${current * 100}%)` }}
