@@ -21,7 +21,7 @@ export default function Button({ children, type = "button", size = "md", classNa
             type={type} 
             disabled={disabled}
             onClick={onClick}
-            className={`rounded bg-[#DB4444] text-white data-active:bg-red-700 data-hover:bg-red-600 data-disabled:opacity-50 data-disabled:cursor-not-allowed ${sizeStyles[size]} ${className}`}
+            className={`rounded bg-[#DB4444] text-white data-active:bg-red-700 data-hover:bg-red-600 data-disabled:opacity-50 data-disabled:cursor-not-allowed whitespace-nowrap ${sizeStyles[size]} ${className}`}
             >   
             {children}
         </BaseButton>

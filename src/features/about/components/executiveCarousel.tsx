@@ -53,11 +53,12 @@ export default function ExecutiveCarousel() {
   }
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 items-center">
+    <div className="w-full flex flex-col gap-6 items-center">
       <div className="flex w-full justify-between items-end">
         <SectionHeader
           labelText="The Figureheads"
           headerText="Meet Our Executives"
+          
         />
         <LeftRightButtons
           onPrev={handleLeft}

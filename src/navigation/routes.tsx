@@ -5,6 +5,7 @@ import HomePage from "../features/dashboard/screens/homePage";
 import SignupPage from "../features/auth/screens/signup";
 import ProtectedRoute from "../components/protectedRoute/protectedRoute";
 import AboutPage from "../features/about/screens/about";
+import NotFoundPage from "../features/notFound/notFound";
 
 export default function AppRoutes() {
     return (
@@ -18,6 +19,7 @@ export default function AppRoutes() {
                 <Route path="/login" element={ <LoginPage /> }/>
                 <Route path="/signup" element={ <SignupPage />}/>
                 <Route path="/about" element={ <AboutPage /> }/>
+                <Route path="*" element={ <NotFoundPage /> } />
             </Route>
         </Routes>
     )

@@ -4,6 +4,7 @@ import { useProducts } from "../../../hooks/useBestSellingProducts";
 import LeftRightButtons from "../../../components/leftRightButtons/leftRightButtons";
 import Button from "../../../components/button";
 import { useState, useEffect } from "react";
+import LoadingSpinner from "../../../components/loadingSpinner/loadingSpinner";
 
 const PAGE_SIZE_SM = 4;
 const PAGE_SIZE_LG = 8;
@@ -74,7 +75,10 @@ export default function BestSellingProducts() {
       </div>
 
       {isLoading && (
-        <div className="text-gray-400 text-sm">Loading products...</div>
+        <div className="flex justify-center items-center h-87.5 gap-4">
+          <LoadingSpinner />
+              <div className="text-lg text-gray-500">Loading...</div>
+        </div>
       )}
 
       {isError && (

@@ -51,25 +51,52 @@ TODO:
     [x] Stats Section
 
 [x] Fix adbar
-[] remove sign in when logged in
-[] motion
 [x] bring back log in in sign in page
 [x] contact num handling
-[] Password view
-
-[] NavPath
-[] Product Page
+[x] remove sign in when logged in
+[x] Password view
+[x] About Page Sizing Issues
+    [x] Our Story Image
+    [x] Numbers section not filling width
+    [x] Executive section not fillin width
+[x] Flash Sales Header Mobile Responsiveness
+[] Find Sections where you can put in motion
+    [x] Hamburger clicked
+    [x] Hero Slide
+    [x] isLoading sections
+    [x] About page transition
+    [] Liked clicked
+    [] Watched clicked
+    [] Flash Timer
+    [] Sign up
+[] Fix hero carousel sizing issue
+[] Add another Navbar item
+[] Executive soc med links
+[x] Fix Remaining page sizing issues
+[x] Cart Button
+[x] Wishlist Button
+[] Breadcrumb
+[] Cart Page
+[] Contact Info Page
 [] Product Image
+[] 404 Not Found Page
+[] Profile Page
+[] Wishlist page
 [] Image Zoom
 [] Related Items
-[] Cart Page
 [] Checkout
 [] Backend
     [] Products
     [] Checkout
     [] Coupon
-[] Billing Details Page
-[] Profile Page
-[] Contact Info
-[] Wishlist page
-[] 404 Not Found Page
+
+* Navigation paths 
+
+
+
+Variant rules
+- Each variant can be linked to at most 1 Image
+- Add image Carousel
+    - allow indexing
+- zoom maybe?
+- 

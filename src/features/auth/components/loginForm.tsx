@@ -5,11 +5,13 @@ import { loginUser } from "../api/loginAuth";
 import { useAuthStore } from "../stores/authStore";
 import { useNavigate, Link } from "react-router-dom";
 import { type AuthState } from "../stores/authStore";
+import PasswordInput from "../../../components/passwordInput/passwordInput";
 
 export default function LoginForm() {
   const [emailOrPhoneNumber, setEmailOrPhoneNo] = useState("");
   const [password, setPassword] = useState("");
   const setUser = useAuthStore((s: AuthState) => s.setUser);
+
   const navigate = useNavigate();
 
   const {
@@ -72,14 +74,10 @@ export default function LoginForm() {
           className="border-b border-gray-300 py-2 text-sm outline-none focus:border-[#DB4444] transition-colors disabled:opacity-50"
           autoComplete="off"
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+        <PasswordInput 
+          password={password}
+          onChange={setPassword}
           disabled={isPending}
-          className="border-b border-gray-300 py-2 text-sm outline-none focus:border-[#DB4444] transition-colors disabled:opacity-50"
-          autoComplete="new-password"
         />
       </div>
 

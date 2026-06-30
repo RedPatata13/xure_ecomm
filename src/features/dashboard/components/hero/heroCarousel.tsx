@@ -12,6 +12,7 @@ export type CarouselSlideComponent = React.ComponentType<CarouselProps>;
 
 export default function HeroCarousel({ slides }: { slides: CarouselSlideComponent[] }) {
     const [current, setCurrent] = useState(0);
+    const PASSIVE_NEXT_MS = 8000;
 
     const handleNext = useCallback(() => {
         setCurrent(prev => (prev + 1) % slides.length);
@@ -29,6 +30,14 @@ export default function HeroCarousel({ slides }: { slides: CarouselSlideComponen
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
     }, [handleNext, handlePrevious]);
+
+    useEffect(() => {
+        if (slides.length <= 1) return;
+        const intervalId = setInterval(() => {
+            handleNext();
+        }, PASSIVE_NEXT_MS);
+        return () => clearInterval(intervalId);
+    }, [slides.length, handleNext]);
 
     const slideColors = [
         "bg-slate-800",
@@ -92,7 +101,29 @@ export default function HeroCarousel({ slides }: { slides: CarouselSlideComponen
                         />
                     ))}
                 </div>
+
+                {slides.length > 1 && (
+                    <div
+                        className="absolute bottom-0 left-0 z-10 h-1 w-full bg-white/10"
+                        aria-hidden="true"
+                    >
+                        <div
+                            key={current}
+                            className="h-full bg-white/70"
+                            style={{
+                                animation: `hero-carousel-progress ${PASSIVE_NEXT_MS}ms linear forwards`,
+                            }}
+                        />
+                    </div>
+                )}
             </div>
+
+            <style>{`
+                @keyframes hero-carousel-progress {
+                    from { width: 0%; }
+                    to { width: 100%; }
+                }
+            `}</style>
         </div>
     );
 }

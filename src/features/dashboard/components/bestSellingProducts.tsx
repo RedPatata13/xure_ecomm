@@ -3,6 +3,7 @@ import SectionHeader from "./sectionHeader";
 import { useProducts } from "../../../hooks/useBestSellingProducts";
 import Button from "../../../components/button";
 import { useRef } from "react";
+import LoadingSpinner from "../../../components/loadingSpinner/loadingSpinner";
 
 // const TILE_WIDTH = 192 + 24;
 
@@ -18,10 +19,13 @@ export default function BestSellingProducts() {
           labelText="This Month"
           headerText="Best Selling Products"
         />
-        <Button size="lg">View All</Button>
+        <Button size="md">View All</Button>
       </div>
       {isLoading && (
-        <div className="text-gray-400 text-sm">Loading products...</div>
+        <div className="flex justify-center items-center h-87.5 gap-4">
+          <LoadingSpinner />
+              <div className="text-lg text-gray-500">Loading...</div>
+        </div>
       )}
       {isError && (
         <div className="text-[#DB4444] text-sm">Failed to load products.</div>

@@ -5,6 +5,7 @@ interface SectionLabelProps {
 interface SectionHeaderProps {
 	labelText : string;
 	headerText: string;
+	className ? : string;
 }
 
 export function SectionLabel({ label }: SectionLabelProps) {
@@ -16,9 +17,9 @@ export function SectionLabel({ label }: SectionLabelProps) {
 	);
 }
 
-export default function SectionHeader({ labelText, headerText } : SectionHeaderProps){
+export default function SectionHeader({ labelText, headerText, className } : SectionHeaderProps){
 	return (
-        <div className="flex flex-col gap-3">
+        <div className={`flex flex-col gap-3 w-full ${className}`}>
             <SectionLabel label={labelText}/>
             <div className="font-semibold text-xl">{headerText}</div>
         </div>

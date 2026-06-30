@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../../../components/button";
 import Signup from "../api/signup";
 import { useAuthStore } from "../stores/authStore";
+import PasswordInput from "../../../components/passwordInput/passwordInput";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -78,13 +79,9 @@ export default function SignupForm() {
           className="border-b border-gray-300 py-2 text-sm outline-none focus:border-[#DB4444] transition-colors"
           autoComplete="off"
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="border-b border-gray-300 py-2 text-sm outline-none focus:border-[#DB4444] transition-colors"
-          autoComplete="new-password"
+        <PasswordInput
+          password={password}
+          onChange={setPassword}
         />
       </div>
 

@@ -16,7 +16,7 @@ export default function AdBar({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-black text-white text-sm px-4 sm:px-6 py-2 sm:py-3 flex items-center justify-between gap-2">
+    <div className="bg-black text-white text-sm px-4 sm:px-6 py-2 sm:py-3 flex items-center justify-between gap-2 relative z-100">
       <p className="flex-1 text-center text-xs sm:text-sm flex flex-wrap justify-center items-center gap-x-2 gap-y-0.5">
         {children}
         <a
@@ -40,21 +40,21 @@ export default function AdBar({
         </button>
 
         {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute top-full right-0 mt-2 bg-white text-black rounded shadow-lg z-50 w-32">
             {LANGUAGES.map((lang) => (
               <button
                 key={lang}
-                onClick={() => {
-                  setSelectedLang(lang);
-                  setOpen(false);
-                }}
+                onClick={() => { setSelectedLang(lang); setOpen(false); }}
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
               >
                 {lang}
               </button>
             ))}
           </div>
-        )}
+        </>
+      )}
       </div>
     </div>
   );

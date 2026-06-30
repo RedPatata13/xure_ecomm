@@ -1,8 +1,10 @@
 import HeroSidebarItem from "./heroSidebarItem";
-
 export default function HeroSidebar(){
     return (
-        <div className="flex flex-col gap-4">
+    
+        <div 
+            className="flex flex-col gap-4"
+        >
             <HeroSidebarItem>Woman's Fashion</HeroSidebarItem>
             <HeroSidebarItem>Men's Fashion</HeroSidebarItem>
             <HeroSidebarItem>Electronics</HeroSidebarItem>

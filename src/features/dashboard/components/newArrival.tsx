@@ -5,10 +5,7 @@ export default function NewArrivals() {
   return (
     <div className="flex flex-col gap-6">
       <SectionHeader labelText="Featured" headerText="New Arrival" />
-
-      {/* Mobile: single column stack | md: PS5 left + right column */}
       <div className="flex flex-col md:flex-row gap-4 md:h-150">
-        {/* PS5 — full width on mobile, half width on md+ */}
         <NewArrivalTile
           productName="PlayStation 5"
           productDesc="Black and White version of the PS5 coming out on sale"

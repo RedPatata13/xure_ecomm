@@ -5,7 +5,7 @@ import AdBar from "../components/adBar/adbar";
 
 function MainLayout() {
     return (
-        <div className="flex flex-col md:min-h-screen overflow-x-hidden min-w-140">
+        <div className="flex flex-col md:min-h-screen min-w-180 overflow-x-clip">
             <AdBar>Summer Sale For All Swim Suits and Free Express Delivery - OFF 50%</AdBar>
             <NavBar />
             <div className="flex flex-1 flex-col items-center justify-center min-h-150"><Outlet /></div>
