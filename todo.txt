@@ -60,6 +60,21 @@ TODO:
     [x] Numbers section not filling width
     [x] Executive section not fillin width
 [x] Flash Sales Header Mobile Responsiveness
+[x] Force scroll in 
+[x] Fix hero carousel sizing issue
+[] Add another Navbar item
+[x] Executive soc med links
+[x] Fix Remaining page sizing issues
+[x] Cart Button
+[x] Fix Screen Responsiveness of the ff:
+    [x] Ad Section
+    [x] Hero Carousel
+[x] Wishlist Button
+[x] Issues
+    [x] Footer Mobile Responsiveness
+    [x] New Arrivals
+    [x] Flash Sales Tiles
+    [x] Hero Overflowing in ~340px
 [] Find Sections where you can put in motion
     [x] Hamburger clicked
     [x] Hero Slide
@@ -67,23 +82,14 @@ TODO:
     [x] About page transition
     [] Liked clicked
     [] Watched clicked
-    [] Flash Timer
-    [] Sign up
-[] Force scroll in 
-[] Fix hero carousel sizing issue
-[] Add another Navbar item
-[] Executive soc med links
-[x] Fix Remaining page sizing issues
-[x] Cart Button
-[] Fix Screen Responsiveness of the ff:
-    [] Ad Section
-    [] Hero Carousel
-[x] Wishlist Button
+    [] Flash Timer # cancelled
+    [x] Sign up
+    [x] Login
+[x] 404 Not Found Page
 [] Breadcrumb
 [] Cart Page
 [] Contact Info Page
 [] Product Image
-[] 404 Not Found Page
 [] Profile Page
 [] Wishlist page
 [] Image Zoom
@@ -93,11 +99,6 @@ TODO:
     [] Products
     [] Checkout
     [] Coupon
-[] Issues
-    [x] Footer Mobile Responsiveness
-    [] New Arrivals
-    [] Flash Sales Tiles
-    [] Hero Overflowing in ~340px
 
 * Navigation paths 
 

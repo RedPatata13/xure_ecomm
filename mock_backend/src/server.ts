@@ -31,44 +31,53 @@ app.get("/api/health", (req, res) => {
 });
 
 app.post("/api/login", async (req, res) => {
-  const { emailOrPhoneNumber, password } = req.body;
+	const { emailOrPhoneNumber, password } = req.body;
 
-  if (!emailOrPhoneNumber || !password) {
-    return res
-      .status(400)
-      .json({ message: "Email/phone and password are required" });
-  }
+	console.log("=== LOGIN REQUEST ===");
+	console.log("Body:", req.body);
 
-  const user = getUserByEmailOrPhone(emailOrPhoneNumber);
-  if (!user) {
-    return res.status(401).json({ message: "Invalid credentials" });
-  }
+	const user = getUserByEmailOrPhone(emailOrPhoneNumber);
+	console.log("User found:", !!user);
 
-  const valid = await bcrypt.compare(password, user.passwordHash);
-  if (!valid) {
-    return res.status(401).json({ message: "Invalid credentials" });
-  }
+	if (!user) {
+		console.log("Login failed: user not found");
+		return res.status(401).json({ message: "Invalid credentials" });
+	}
 
-  const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
-    expiresIn: "7d",
-  });
+	const valid = await bcrypt.compare(password, user.passwordHash);
+	console.log("Password valid:", valid);
 
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: false,
-    sameSite: "strict",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
+	if (!valid) {
+		console.log("Login failed: invalid password");
+		return res.status(401).json({ message: "Invalid credentials" });
+	}
 
-  res.status(200).json({
-    user: {
-      username: user.username,
-      email: user.email,
-      phoneNumber: user.phoneNumber,
-      dateCreated: user.dateCreated,
-      dateUpdated: user.dateUpdated,
-    },
-  });
+	const token = jwt.sign(
+		{ id: user.id, email: user.email },
+		JWT_SECRET,
+		{ expiresIn: "7d" }
+	);
+
+	console.log("JWT created:", token.slice(0, 20) + "...");
+
+	res.cookie("token", token, {
+		httpOnly: true,
+		secure: false,
+		sameSite: "strict",
+		maxAge: 7 * 24 * 60 * 60 * 1000,
+	});
+
+	console.log("Cookie set.");
+
+	res.status(200).json({
+		user: {
+			username: user.username,
+			email: user.email,
+			phoneNumber: user.phoneNumber,
+			dateCreated: user.dateCreated,
+			dateUpdated: user.dateUpdated,
+		},
+	});
 });
 
 app.post("/api/signup", async (req, res) => {
@@ -94,9 +103,12 @@ app.post("/api/signup", async (req, res) => {
 });
 
 app.get("/api/me", (req, res) => {
+  console.log("=== /api/me ===");
+	console.log("Cookies:", req.cookies);
   const token = req.cookies.token;
 
   if (!token) {
+    console.log("Token not found");
     return res.status(401).json({ message: "Not authenticated" });
   }
 
@@ -105,9 +117,11 @@ app.get("/api/me", (req, res) => {
     const user = getUserById(decoded.id);
 
     if (!user) {
+      console.log("User not found");
       return res.status(401).json({ message: "User not found" });
     }
 
+    console.log("Returning user:", user.username);
     res.status(200).json({
       user: {
         username: user.username,
@@ -117,7 +131,8 @@ app.get("/api/me", (req, res) => {
         dateUpdated: user.dateUpdated,
       },
     });
-  } catch {
+  } catch (err) {
+    console.log("JWT verification failed:", err);
     res.status(401).json({ message: "Invalid token" });
   }
 });

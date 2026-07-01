@@ -29,7 +29,8 @@ export default function NavBar() {
 
   return (
     <div className={`sticky top-0 z-50 flex flex-col bg-white transition-shadow duration-200 ${scrolled ? "shadow-md" : ""}`}>
-      <div className="flex items-center justify-between w-full pr-4 pl-6 py-2 md:px-12 lg:px-24">
+      
+      <div className="relative flex items-center justify-between w-full pr-4 pl-6 py-2 md:px-12 lg:px-24">
         {/* sm: hamburger, md+: logo */}
         <button
           aria-label="Toggle menu"
@@ -69,6 +70,12 @@ export default function NavBar() {
           > 
           </motion.div>
         </button>
+
+        {/* logo that only shows in mobile*/}
+        <div className="md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Exclusive />
+        </div>
+
         <div className="hidden md:block">
           <Exclusive />
         </div>
@@ -113,7 +120,6 @@ export default function NavBar() {
             paddingBottom: menuOpen ? "1rem" : 0,
           }}
         >
-          {/* <Exclusive /> */}
           <SearchBar  className="w-full"/>
           <NavBarItem target="/" onClick={() => setMenuOpen(false)}>
             Home

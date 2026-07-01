@@ -4,12 +4,14 @@ type FooterColumnLinkProps = {
 	children: string;
 	target?: string;
 	cutoffs?: number[];
+	className? : string;
 };
 
 export default function FooterColumnLink({
 	children,
 	target,
 	cutoffs = [],
+	className = ""
 }: FooterColumnLinkProps) {
 	const content: React.ReactNode[] = [];
 	let start = 0;
@@ -27,7 +29,7 @@ export default function FooterColumnLink({
 	return (
 		<Link
 			to={target ?? ""}
-			className="hover:underline hover:pointer"
+			className={`hover:underline hover:pointer ${className}`}
 		>
 			{content}
 		</Link>

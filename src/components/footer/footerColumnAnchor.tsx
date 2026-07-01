@@ -2,12 +2,14 @@ type FooterColumnAnchorProps = {
 	children: string;
 	href?: string;
 	cutoffs?: number[];
+	className? : string;
 };
 
 export default function FooterColumnAnchor({
 	children,
 	href = "",
 	cutoffs = [],
+	className = ""
 }: FooterColumnAnchorProps) {
 	const content: React.ReactNode[] = [];
 	let start = 0;
@@ -25,7 +27,7 @@ export default function FooterColumnAnchor({
 	return (
 		<a
 			href={href}
-			className="hover:underline"
+			className={`hover:underline ${className}`}
 		>
 			{content}
 		</a>

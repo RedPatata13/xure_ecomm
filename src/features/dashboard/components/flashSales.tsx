@@ -3,14 +3,15 @@ import SectionHeader from "./sectionHeader";
 import ProductTile from "../../../components/productTile/productTile";
 import LeftRightButtons from "../../../components/leftRightButtons/leftRightButtons";
 import { useProducts } from "../../../hooks/useBestSellingProducts";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../../../components/button";
 import LoadingSpinner from "../../../components/loadingSpinner/loadingSpinner";
 import { motion, type Variants } from "motion/react";
 
-const TILE_WIDTH = 270;
-const TILE_GAP = 24; // gap-6 in tw
-const SCROLL_AMOUNT = TILE_WIDTH + TILE_GAP;
+const TILE_WIDTH_DESKTOP = 270;     
+const TILE_WIDTH_MOBILE = 160; // gap- in tw
+const TILE_GAP_DESKTOP = 24; // gap-6 in tw
+const TILE_GAP_MOBILE = 12; // gap-3 in tw
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const container: Variants = {
@@ -21,7 +22,6 @@ const container: Variants = {
     },
   },
 };
-
 const tileVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: {
@@ -34,45 +34,71 @@ const tileVariants: Variants = {
 export default function FlashSales() {
   const { data: products, isLoading, isError } = useProducts(8);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 639px)");
+    function handleChange(e: MediaQueryListEvent | MediaQueryList) {
+      setIsMobile(e.matches);
+    }
+    handleChange(mql);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
+
+  const tileWidth = isMobile ? TILE_WIDTH_MOBILE : TILE_WIDTH_DESKTOP;
+  const tileGap = isMobile ? TILE_GAP_MOBILE : TILE_GAP_DESKTOP;
+  const scrollAmount = tileWidth + tileGap;
 
   function scrollLeft() {
-    scrollRef.current?.scrollBy({ left: -SCROLL_AMOUNT, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   }
   function scrollRight() {
-    scrollRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: scrollAmount, behavior: "smooth" });
   }
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col sm:flex-row w-full sm:justify-between sm:items-end gap-4">
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-10 lg:gap-28 sm:items-end">
+      <div className="flex flex-col gap-4 w-full">
+        <div className="flex items-center justify-between gap-4 sm:hidden">
           <SectionHeader
             headerText="Flash Sales"
             labelText="Today's"
             className="whitespace-nowrap"
           />
+          <LeftRightButtons onPrev={scrollLeft} onNext={scrollRight} />
+        </div>
+        <div className="sm:hidden">
           <Countdown targetDate={new Date("2026-12-31T23:59:59")} />
         </div>
-        <LeftRightButtons onPrev={scrollLeft} onNext={scrollRight} />
+        
+        <div className="hidden sm:flex w-full sm:justify-between sm:items-end gap-4">
+          <div className="flex sm:flex-row gap-3 sm:gap-10 lg:gap-28 sm:items-end">
+            <SectionHeader
+              headerText="Flash Sales"
+              labelText="Today's"
+              className="whitespace-nowrap"
+            />
+            <Countdown targetDate={new Date("2026-12-31T23:59:59")} />
+          </div>
+          <LeftRightButtons onPrev={scrollLeft} onNext={scrollRight} />
+        </div>
       </div>
-
       {isLoading && (
         <div className="flex justify-center items-center h-87.5 gap-4">
           <LoadingSpinner />
           <div className="text-lg text-gray-500">Loading...</div>
         </div>
       )}
-
       {isError && (
         <div className="flex justify-center items-center h-87.5 text-[#DB4444]">
           Failed to load products.
         </div>
       )}
-
       {products && (
         <motion.div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide"
+          className="flex gap-3 sm:gap-6 overflow-x-auto scroll-smooth scrollbar-hide"
           variants={container}
           initial="hidden"
           animate="show"
@@ -88,19 +114,17 @@ export default function FlashSales() {
                 imagePath={product.imagePath}
                 watch={product.watched}
                 liked={product.liked}
-                width={TILE_WIDTH}
+                width={tileWidth}
               />
             </motion.div>
           ))}
         </motion.div>
       )}
-
       <div className="flex justify-center my-4">
         <Button size="md" className="w-64">
           View All Products
         </Button>
       </div>
-
       <hr className="border-t border-gray-300" />
     </div>
   );
